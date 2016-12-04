@@ -1,2 +1,2 @@
-# tutorial_CI
+# tutorialCI
 Tutorial Framework MVC para practica
