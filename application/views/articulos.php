@@ -3,6 +3,8 @@
 		<p>Estos son los últimos artículos publicados.</p>
 		<table>
 			<?php
+			$this->load->library('email');
+	
 			/**
 			while ($fila = mysql_fetch_array($rs_articulos)){
 			   echo '<td>';
@@ -25,5 +27,6 @@
 			}
 			?>
 		</table>
+
 		<a href="articulos/logout"><button>logout</button></a>
 </div>
