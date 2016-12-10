@@ -11,6 +11,7 @@ class Valida_usuario extends CI_Controller {
 		
         if ($this->form_validation->run() == FALSE)
         {
+			  /*****se comento para agregar libreria maneja_vistas***
 			  $datos = array (
 					'btn_text' => 'Login',
 					'msg_text' => 'Not registered?',
@@ -26,6 +27,9 @@ class Valida_usuario extends CI_Controller {
 			  $datos_plantilla['cabecera']=$this->load->view('cabecera','',true);
 			  $datos_plantilla['cuerpo']=$this->load->view('login',$datos,true);
 			  $this->load->view('plantilla_principal',$datos_plantilla);
+			  ****/
+			$this->load->library('maneja_vistas');
+			$this->maneja_vistas->muestra_login();			  
         }
         else
         {
@@ -51,7 +55,7 @@ class Valida_usuario extends CI_Controller {
 
 			//redirect('articulos', 'refresh');
 						
-		  
+			/***se comento para agregar libreria maneja_vistas***
 			//cargo el modelo de artículos
 			$this->load->model('Articulos_model');
 		  
@@ -70,8 +74,11 @@ class Valida_usuario extends CI_Controller {
 			$datos_plantilla['cabecera']=$this->load->view('cabecera','',true);
 			$datos_plantilla['cuerpo']=$this->load->view('articulos', $datos_vista,true);
 			$this->load->view('plantilla_principal',$datos_plantilla);
-			
+			**/
+			$this->load->library('maneja_vistas');
+			$this->maneja_vistas->lista_articulos();			
 		}else{
+			/***se comento para agregar libreria maneja_vistas***			  
 			  $datos = array (
 					'btn_text' => 'Login',
 					'msg_text' => 'Not registered?',
@@ -87,7 +94,9 @@ class Valida_usuario extends CI_Controller {
 			  $datos_plantilla['cabecera']=$this->load->view('cabecera','',true);
 			  $datos_plantilla['cuerpo']=$this->load->view('login',$datos,true);
 			  $this->load->view('plantilla_principal',$datos_plantilla);
-			
+			*****/
+			$this->load->library('maneja_vistas');
+			$this->maneja_vistas->muestra_login();
 		}
    }
 }

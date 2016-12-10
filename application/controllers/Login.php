@@ -6,6 +6,7 @@ class Login extends MY_Controller {
 		
 		$this->load->helper(array('url','form'));
 		if($this->session->userdata('logged_in')){
+				/****se comento para agregar libreria maneja_vistas*****
 				//redirect('articulos', 'refresh');
 						
 		  
@@ -27,7 +28,11 @@ class Login extends MY_Controller {
 				$datos_plantilla['cabecera']=$this->load->view('cabecera','',true);
 				$datos_plantilla['cuerpo']=$this->load->view('articulos', $datos_vista,true);
 				$this->load->view('plantilla_principal',$datos_plantilla);
+				**/
+				$this->load->library('maneja_vistas');
+				$this->maneja_vistas->lista_articulos();
 		}else{
+			  /****se comento para agregar libreria maneja_vistas****
 			  $datos = array (
 					'btn_text' => 'Login',
 					'msg_text' => 'Not registered?',
@@ -43,9 +48,13 @@ class Login extends MY_Controller {
 			  $datos_plantilla['cabecera']=$this->load->view('cabecera','',true);
 			  $datos_plantilla['cuerpo']=$this->load->view('login',$datos,true);
 			  $this->load->view('plantilla_principal',$datos_plantilla);
-
+			**/
+			$this->load->library('maneja_vistas');
+			$this->maneja_vistas->muestra_login();
+		
 		}
 		
+
 		//echo $this->test_controller();
    }
    
