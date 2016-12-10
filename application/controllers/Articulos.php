@@ -4,6 +4,7 @@ class Articulos extends CI_Controller {
       //cargo el helper de url, con funciones para trabajo con URL del sitio
       $this->load->helper('url');
 	  if($this->session->userdata('logged_in')){
+		  /**
 		  $this->load->helper('url');
 		  
 		  //cargo el modelo de artículos
@@ -24,7 +25,9 @@ class Articulos extends CI_Controller {
 		  $datos_plantilla['cabecera']=$this->load->view('cabecera','',true);
 		  $datos_plantilla['cuerpo']=$this->load->view('articulos', $datos_vista,true);
 		  $this->load->view('plantilla_principal',$datos_plantilla);
-		  
+		  **/
+		  $this->load->library('maneja_vistas');
+		  $this->maneja_vistas->lista_articulos();
 		}else{
 			redirect('login', 'refresh');
 		}  
@@ -40,6 +43,7 @@ class Articulos extends CI_Controller {
 	 }
 	 
 	 function muestra($id=0){
+			/****se comento para agregar libreria maneja_vistas***
 			$this->load->helper('url');
 			
 			$this->load->model('Articulos_model');
@@ -47,13 +51,13 @@ class Articulos extends CI_Controller {
 			$this->load->library('conversor_fechas');
 			
 			$arrayArticulo=$this->Articulos_model->dame_articulo($id);
-			/**
-			$arrayArticuloEsp=array('titulo'=>$arrayArticulo['titulo'],
-			'id'=>$arrayArticulo['id'],
-			'descripcion'=>$arrayArticulo['descripcion'],
-			'cuerpo'=>$arrayArticulo['cuerpo'],
-			'fec_alta'=>fecha_mysql_a_espanol($arrayArticulo['fec_alta']));
-			**/
+		
+			//$arrayArticuloEsp=array('titulo'=>$arrayArticulo['titulo'],
+			//'id'=>$arrayArticulo['id'],
+			//'descripcion'=>$arrayArticulo['descripcion'],
+			//'cuerpo'=>$arrayArticulo['cuerpo'],
+			//'fec_alta'=>fecha_mysql_a_espanol($arrayArticulo['fec_alta']));
+			
 			foreach($arrayArticulo as $key => $value){
 				if($key=='fec_alta'){
 					$arrayArticuloEsp[$key]= $this->conversor_fechas->fecha_mysql_a_espanol($value);
@@ -83,7 +87,9 @@ class Articulos extends CI_Controller {
 				//print_r($data['articulo']);
 				//var_dump($arrayArticulo);
 			}
-			
+			***/
+		  $this->load->library('maneja_vistas');
+		  $this->maneja_vistas->detalle_articulo($id);			
 	 }
 }
 ?>
