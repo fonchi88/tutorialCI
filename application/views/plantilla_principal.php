@@ -4,6 +4,8 @@
 <?=$cabecera?>
 </head>
 <body>
+
 	<?=$cuerpo?>
+
 </body>
 </html>
