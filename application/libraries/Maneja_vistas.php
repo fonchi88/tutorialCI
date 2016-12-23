@@ -12,19 +12,15 @@ class Maneja_vistas{
 			  
 		//pido los ultimos artículos al modelo
 		$ultimosArticulos = $CI->Articulos_model->dame_ultimos_articulos();
-		//print_r($ultimosArticulos);
+
 		//creo el array con datos de configuración para la vista
 		$datos_vista = array('rs_articulos' => $ultimosArticulos);
 			  
-		//print_r($datos_vista);
-		//cargo la vista pasando los datos de configuacion
-		//$this->load->view('cabecera');
-		//$this->load->view('articulos', $datos_vista);
+
 			  
 		$datos_plantilla['titulo']='Catalogo de articulos...Bienvenido al sitio';
 		$datos_plantilla['cabecera']=$CI->load->view('cabecera','',true);
 		$datos_plantilla['cuerpo']=$CI->load->view('articulos', $datos_vista,true);
-		//$this->load->view('plantilla_principal',$datos_plantilla);
 		
 		return $CI->load->view('plantilla_principal',$datos_plantilla);
 			
